@@ -1,162 +1,165 @@
 import React from "react";
 import { Menu, ArrowLeft, Calendar, Users, Phone, Heart } from "lucide-react";
 
-export default function App({ setCurrentView }) {
-  return (
-    <div className="min-h-screen bg-cream-50 text-gray-800 antialiased flex flex-col">
-      {/* Full-width hero with background image */}
-     <header
-  className="relative min-h-[70vh] md:min-h-screen flex flex-col justify-center bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: "url('/hero-bg.png')" }}
+// Renamed from App to HeroSection for clarity and consistency with App.jsx import
+export default function HeroSection({ setCurrentView, isAuthenticated }) {
+
+  return (
+    <div className="min-h-screen bg-cream-50 text-gray-800 antialiased flex flex-col">
+      {/* Full-width hero with background image */}
+     <header
+  className="relative min-h-[70vh] md:min-h-screen flex flex-col justify-center bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/hero-bg.png')" }}
 >
-  {/* White overlay for readability */}
-  <div className="absolute inset-0 bg-white/50"></div>
+  {/* White overlay for readability */}
+  <div className="absolute inset-0 bg-white/50"></div>
 
-  {/* Hero content */}
-  <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 px-4 sm:px-8 md:px-16 lg:px-32 flex-1 py-12 md:py-0">
-    {/* Text section */}
-    <div className="flex-1 text-center lg:text-left">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-green-900 to-green-900 bg-clip-text text-transparent leading-tight">
-        Mind Harmony
-      </h1>
-      <p className="mt-4 sm:mt-6 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-gray-700">
-        A peaceful, safe online space for therapy and wellbeing. Find a
-        provider that suits your needs and begin your path to healing.
-      </p>
+  {/* Hero content */}
+  <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 px-4 sm:px-8 md:px-16 lg:px-32 flex-1 py-12 md:py-0">
+    {/* Text section */}
+    <div className="flex-1 text-center lg:text-left">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-green-900 to-green-900 bg-clip-text text-transparent leading-tight">
+        Mind Harmony
+      </h1>
+      <p className="mt-4 sm:mt-6 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-gray-700">
+        A peaceful, safe online space for therapy and wellbeing. Find a
+        provider that suits your needs and begin your path to healing.
+      </p>
 
-      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-        <button
-          onClick={() => setCurrentView("app")}
-          className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200"
-        >
-          Get Started
-          <Heart className="ml-2 w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-        <button className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200">
-          <ArrowLeft className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
-          Learn More
-        </button>
-      </div>
-    </div>
+      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+      <button
+  onClick={() => setCurrentView(isAuthenticated ? "app" : "auth")}
+  className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200"
+>
+  Get Started
+  <Heart className="ml-2 w-5 h-5 sm:w-6 sm:h-6" />
+</button>
+        <button className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200">
+          <ArrowLeft className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
+          Learn More
+        </button>
+      </div>
+    </div>
 
-    {/* Mock phone preview */}
-    <div className="flex-1 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl mt-8 lg:mt-0">
-      <video
-        src="/mindharmony.mp4"
-        loop
-        autoPlay
-        muted
-        playsInline
-        className="w-full h-full object-cover"
-      />
-    </div>
-  </div>
+    {/* Mock phone preview */}
+    <div className="flex-1 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl mt-8 lg:mt-0">
+      <video
+        src="/mindharmony.mp4"
+        loop
+        autoPlay
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </div>
 </header>
 
-      {/* Steps Section */}
-   <main className="flex flex-col">
-  <section className="px-6 lg:px-8 py-20  bg-gradient-to-l from-teal-600 to-teal-900">
-    <h2 className="text-4xl font-semibold text-white text-center">
-      Few Steps to Begin
-    </h2>
+      {/* Steps Section */}
+   <main className="flex flex-col">
+  <section className="px-6 lg:px-8 py-20  bg-gradient-to-l from-teal-600 to-teal-900">
+    <h2 className="text-4xl font-semibold text-white text-center">
+      Few Steps to Begin
+    </h2>
 
-    <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-10 ">
-         <Card
-  title="Step 1: Complete the Form"
-  icon={
-    <img
-      src="/chat.png"
-      alt="Calendar Icon"
-      className="w-12 h-12 mx-auto"
-    />
-  }
-  className="bg-white rounded-2xl shadow-lg p-4 text-center hover:shadow-xl transition"
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+      <Card
+        title="Step 1: Complete the Form"
+        icon={
+          <img
+            src="/chat.png"
+            alt="Calendar Icon"
+            className="w-10 h-10 sm:w-12 sm:h-12 mx-auto"
+          />
+        }
+      >
+        Tell us about your needs, availability, and preferences.
+      </Card>
+      <Card
+        title="Step 2: Get Matched"
+        icon={
+          <img
+            src="/match.png"
+            alt="Match Icon"
+            className="w-10 h-10 sm:w-12 sm:h-12 mx-auto"
+          />
+        }
+      >
+        We'll match you with a provider who fits your goals and style.
+      </Card>
+      <Card
+        title="Step 3: Attend Appointment"
+        icon={
+          <img
+            src="/booking.png"
+            alt="Booking Icon"
+            className="w-10 h-10 sm:w-12 sm:h-12 mx-auto"
+          />
+        }
+      >
+        Book and attend your session online or in-person.
+      </Card>
+    </div>
+  </section>
+        {/* Therapy Formats */}
+        <section className="px-8 lg:px-20 py-20 bg-white">
+          <h3 className="text-3xl font-semibold mb-10 text-center">Therapy Formats</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-8 rounded-2xl border border-green-100 shadow-sm bg-white">
+              <h4 className="font-semibold text-xl">Individual</h4>
+              <p className="mt-3 text-base text-gray-600">
+                One-on-one sessions focused on your goals and needs.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-green-800 text-white shadow-sm">
+              <h4 className="font-semibold text-xl">Couples</h4>
+              <p className="mt-3 text-base opacity-90">
+                Work on relationship dynamics, communication, and healing
+                together.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      
+       <section className="relative px-8 lg:px-20 py-20 bg-gradient-to-b from-green-50 to-green-100 flex justify-center items-center">
+  <div className="relative w-full max-w-5xl h-[70vh] bg-[url('/pic1.jpg')] bg-cover bg-center rounded-3xl shadow-2xl flex items-center justify-center">
+    
+    <div className="backdrop-blur-md bg-white/10 border border-white/50 rounded-xl p-6 max-w-sm text-center shadow-lg">
+      <p className="text-lg md:text-2xl font-medium text-black font-mono" >
+        "Healing isn't always a  <span className="text-teal-800"> Straight line</span> but it doesn't have to be a  <span className="text-teal-600"> Circle</span>
+      </p>
+      {/* UPDATED: Change view to "auth" to show Login/Sign Up page */}
+     <button 
+  onClick={() => setCurrentView(isAuthenticated ? "app" : "auth")} 
+  className="inline-flex items-center px-8 p-2 mt-2 text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 hover:text-xl cursor-pointer shadow-md transition-all duration-200"
 >
- Tell us about your needs, availability, and preferences.
-</Card>
-      <Card
-        title="Step 2: Get Matched"
-         icon={
-    <img
-      src="/match.png"
-      alt="Calendar Icon"
-      className="w-12 h-12 mx-auto"
-    />
-  }
-        className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition"
-      >
-        We'll match you with a provider who fits your goals and style.
-      </Card>
+  Chat
+</button>
 
-     <Card
-  title="Step 3: Attend Appointment"
-  icon={
-    <img
-      src="/booking.png"
-      alt="Calendar Icon"
-      className="w-10 h-10 mx-auto"
-    />
-  }
-  className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition"
->
- Book and attend your session online or in-person.
-</Card>
+    </div>
 
-    </div>
-  </section>
-        {/* Therapy Formats */}
-        <section className="px-8 lg:px-20 py-20 bg-white">
-          <h3 className="text-3xl font-semibold mb-10 text-center">Therapy Formats</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-2xl border border-green-100 shadow-sm bg-white">
-              <h4 className="font-semibold text-xl">Individual</h4>
-              <p className="mt-3 text-base text-gray-600">
-                One-on-one sessions focused on your goals and needs.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl bg-green-800 text-white shadow-sm">
-              <h4 className="font-semibold text-xl">Couples</h4>
-              <p className="mt-3 text-base opacity-90">
-                Work on relationship dynamics, communication, and healing
-                together.
-              </p>
-            </div>
-          </div>
-        </section>
-
-      
-       <section className="relative px-8 lg:px-20 py-20 bg-gradient-to-b from-green-50 to-green-100 flex justify-center items-center">
-  <div className="relative w-full max-w-5xl h-[70vh] bg-[url('/pic1.jpg')] bg-cover bg-center rounded-3xl shadow-2xl flex items-center justify-center">
-    
-    <div className="backdrop-blur-md bg-white/10 border border-white/50 rounded-xl p-6 max-w-sm text-center shadow-lg">
-      <p className="text-lg md:text-2xl font-medium text-black font-mono" >
-        "Healing isn't always a  <span className="text-teal-800"> Straight line</span> but it doesn't have to be a  <span className="text-teal-600"> Circle</span>
-      </p>
-      <button onClick={()=>setCurrentView("app")} className="inline-flex items-center px-8 p-2 mt-2 text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 hover:text-xl cursor-pointer shadow-md transition-all duration-200">Chat</button>
-    </div>
-
-  </div>
+  </div>
 </section>
 
-      </main>
+      </main>
 
-   
-    </div>
-  );
+   
+    </div>
+  );
 }
 
-function Card({ title, icon, children, className }) {
-  return (
-    <div
-      className={`rounded-3xl p-25 shadow-md flex flex-col items-center justify-center text-center gap-4
-      transition transform hover:-translate-y-2 hover:shadow-xl ${className}`}
-    >
-      <div className="bg-white/70 rounded-xl p-4 shadow-sm">{icon}</div>
-      <h3 className="font-semibold text-2xl text-green-900">{title}</h3>
-      {children && (
-        <p className="text-lg text-gray-700 mt-3 leading-relaxed">{children}</p>
-      )}
-    </div>
-  );
+function Card({ title, icon, children }) {
+  return (
+    <div
+      className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center gap-3 max-w-xs w-full mx-auto transition transform hover:-translate-y-2 hover:shadow-xl"
+    >
+      <div className="bg-white/70 rounded-xl p-3 shadow-sm flex items-center justify-center">{icon}</div>
+      <h3 className="font-semibold text-lg sm:text-xl md:text-2xl text-green-900">{title}</h3>
+      {children && (
+        <p className="text-base sm:text-lg text-gray-700 mt-2 leading-relaxed">{children}</p>
+      )}
+    </div>
+  );
 }

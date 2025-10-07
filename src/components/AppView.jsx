@@ -3,22 +3,23 @@ import ChatTab from "./ChatTab";
 import DashboardTab from "./DashbardTab";
 import AppointmentsTab from "./AppointmentsTab";
 
-function AppView({ setCurrentView, activeTab, setActiveTab, chatMessages, currentMessage, setCurrentMessage, handleSendMessage, moodLogs, appointments }) {
+function AppView({ setCurrentView, activeTab, setActiveTab, chatMessages, currentMessage, onSignOut,  setCurrentMessage, handleSendMessage, moodLogs, appointments }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+            <div className="flex items-center"   onClick={() => setCurrentView("hero")}>
               <Brain className="w-8 h-8 text-teal-500 mr-3" />
               <h1 className="text-xl font-bold text-gray-800">Mind Harmony</h1>
             </div>
-            <button
-              onClick={() => setCurrentView("hero")}
-              className="text-gray-500 hover:text-gray-700 text-sm"
-            >
-              Back to Home
-            </button>
+         
+                <button
+          onClick={onSignOut}
+          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Log Out
+        </button>
           </div>
         </div>
       </header>
