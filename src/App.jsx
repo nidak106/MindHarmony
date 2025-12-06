@@ -28,7 +28,7 @@ meetUrl: "[https://meet.google.com/lmn-opqr-stu](https://meet.google.com/lmn-opq
 ];
 
 function App() {
-const [currentView, setCurrentView] = useState("hero"); // 🏠 Start with Hero page
+const [currentView, setCurrentView] = useState("hero"); 
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 const [activeTab, setActiveTab] = useState("chat");
@@ -37,20 +37,20 @@ const [currentMessage, setCurrentMessage] = useState("");
 const [moodLogs, setMoodLogs] = useState([]);
 const [appointments] = useState(DUMMY_APPOINTMENTS);
 
-// ✅ Successful login/signup
+
 const handleAuthSuccess = () => {
 setIsAuthenticated(true);
 setCurrentView("app");
 };
 
-// 🚪 Handle sign-out
+
 const handleSignOut = () => {
 setIsAuthenticated(false);
 setCurrentView("hero");
 localStorage.removeItem("mindHarmony_auth");
 };
 
-// 🔁 Load saved data
+
 useEffect(() => {
 const savedMessages = localStorage.getItem("mindHarmony_chat");
 const savedMoodLogs = localStorage.getItem("mindHarmony_moods");
@@ -70,7 +70,6 @@ if (savedMoodLogs) {
   setMoodLogs(JSON.parse(savedMoodLogs));
 }
 
-// 🕒 Only remember auth state, but don't auto-open the app
 if (savedAuth === "true") {
   setIsAuthenticated(true);
 }
@@ -78,7 +77,7 @@ if (savedAuth === "true") {
 
 }, []);
 
-// 💾 Save data
+
 useEffect(() => {
 localStorage.setItem("mindHarmony_chat", JSON.stringify(chatMessages));
 }, [chatMessages]);
@@ -91,11 +90,10 @@ useEffect(() => {
 localStorage.setItem("mindHarmony_auth", isAuthenticated);
 }, [isAuthenticated]);
 
-// 🎭 Mood detection
 const detectMood = (message) => {
 const lower = message.toLowerCase();
 const pos = ["happy", "great", "good", "wonderful", "amazing", "excellent", "fantastic", "joy", "love", "excited"];
-const neg = ["sad", "depressed", "anxious", "worried", "stressed", "angry", "upset", "frustrated", "lonely", "hopeless"];
+const neg = ["sad", "depressed", "anxious","hate","alone", "worried", "stressed", "angry", "upset", "frustrated", "lonely", "hopeless"];
 
 const hasPos = pos.some((w) => lower.includes(w));
 const hasNeg = neg.some((w) => lower.includes(w));
@@ -107,12 +105,12 @@ return "neutral";
 
 };
 
-// 🤖 Simple AI response
+
 const getAIResponse = (message) => {
 const lower = message.toLowerCase();
 
 
-if (lower.includes("sad") || lower.includes("depressed") || lower.includes("anxious"))
+if (lower.includes("sad") || lower.includes("depressed") || lower.includes("anxious")|| lower.includes("upset")||(lower.includes("mad")))
   return "I'm sorry to hear that. Would you like me to schedule a session with your therapist? 💙";
 if (lower.includes("happy") || lower.includes("great") || lower.includes("wonderful"))
   return "That's wonderful! Keep it up 🌟";
@@ -120,13 +118,16 @@ if (lower.includes("stressed") || lower.includes("overwhelmed"))
   return "I understand you're feeling stressed. Have you tried some deep breathing exercises? 🧘‍♀️";
 if (lower.includes("help"))
   return "I'm here to help you. Whether you need someone to listen or connect with a professional, I'm with you 💚";
-
+if(lower.includes("talk")|| lower.includes("listen"))
+  return "I am here to talk to you, tell me how you feel"
+if (lower.includes("hate"))
+  return "Hate is a strong feeling do you want me to schedule an appointment for you ??"
 return "I understand. Tell me more about how you're feeling today. 🤗";
 
 
 };
 
-// 💬 Handle sending a message
+
 const handleSendMessage = () => {
 if (!currentMessage.trim()) return;
 
@@ -164,7 +165,7 @@ setCurrentMessage("");
 
 };
 
-// 🔄 View rendering logic
+
 if (currentView === "hero") {
 return <HeroSection setCurrentView={setCurrentView} isAuthenticated={isAuthenticated} />;
 }
@@ -185,7 +186,7 @@ setCurrentMessage={setCurrentMessage}
 handleSendMessage={handleSendMessage}
 moodLogs={moodLogs}
 appointments={appointments}
-onSignOut={handleSignOut} // ✅ Pass logout handler
+onSignOut={handleSignOut} 
 />
 );
 }

@@ -8,7 +8,7 @@ export default function HeroSection({ setCurrentView, isAuthenticated }) {
     <div className="min-h-screen bg-cream-50 text-gray-800 antialiased flex flex-col">
       {/* Full-width hero with background image */}
      <header
-  className="relative min-h-[70vh] md:min-h-screen flex flex-col justify-center bg-cover bg-center bg-no-repeat"
+  className="relative min-h-[65vh] md:min-h-screen flex flex-col justify-center bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/hero-bg.png')" }}
 >
   {/* White overlay for readability */}
@@ -34,15 +34,14 @@ export default function HeroSection({ setCurrentView, isAuthenticated }) {
   Get Started
   <Heart className="ml-2 w-5 h-5 sm:w-6 sm:h-6" />
 </button>
-        <button className="inline-flex items-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200">
+        <button className="inline-flex items-center px-6 sm:px-4 md:px-10 py-3 sm:py-3 s md:py-5 text-base sm:text-lg font-semibold text-teal-700 bg-white border border-teal-200 rounded-full hover:bg-teal-50 shadow-md transition-all duration-200">
           <ArrowLeft className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
           Learn More
         </button>
       </div>
     </div>
-
-    {/* Mock phone preview */}
-    <div className="flex-1 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl mt-8 lg:mt-0">
+{/* video section */}
+    <div className="flex-1 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl mt-8 lg:mt-0 md:h-96">
       <video
         src="/mindharmony.mp4"
         loop
@@ -100,30 +99,52 @@ export default function HeroSection({ setCurrentView, isAuthenticated }) {
         Book and attend your session online or in-person.
       </Card>
     </div>
+
+
   </section>
         {/* Therapy Formats */}
-        <section className="px-8 lg:px-20 py-20 bg-white">
-          <h3 className="text-3xl font-semibold mb-10 text-center">Therapy Formats</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-2xl border border-green-100 shadow-sm bg-white">
-              <h4 className="font-semibold text-xl">Individual</h4>
-              <p className="mt-3 text-base text-gray-600">
-                One-on-one sessions focused on your goals and needs.
-              </p>
-            </div>
+ <section className="px-8 lg:px-20 py-20 bg-gradient-to-l from-green-50 to-green-100">
+  <h1 className="md:text-6xl text-4xl font-mono font-extrabold mb-10 text-center text-teal-700">Therapy Formats</h1>
 
-            <div className="p-8 rounded-2xl bg-green-800 text-white shadow-sm">
-              <h4 className="font-semibold text-xl">Couples</h4>
-              <p className="mt-3 text-base opacity-90">
-                Work on relationship dynamics, communication, and healing
-                together.
-              </p>
-            </div>
-          </div>
-        </section>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-0 ">
+    {/* Individual */}
+    <div className="relative group overflow-hidden cursor-pointer rounded-2xl">
+      <img
+        src="/alone.png"
+        alt="Individual Therapy"
+        className="w-full h-[455px] object-cover transition-transform duration-500 group-hover:opacity-90 "
+      />
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all duration-300 flex flex-col justify-end p-8 text-white round">
+        <h4 className="text-3xl md:text-4xl font-semibold">Individual</h4>
+        <div className="w-35 h-[2px] bg-white/50 my-3"></div>
+        <p className="text-base text-gray-200">
+          One-on-one sessions focused on your goals and needs.
+        </p>
+      </div>
+    </div>
+
+    {/* Couples */}
+    <div className="relative group overflow-hidden cursor-pointer rounded-2xl">
+      <img
+        src="/couple.png"
+        alt="Couples Therapy"
+        className="w-full h-[455px] object-cover transition-transform duration-500 group-hover:opacity-90"
+      />
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all duration-300 flex flex-col justify-end p-8 text-white">
+        <h4 className="text-3xl md:text-4xl font-semibold">Couples</h4>
+        <div className="w-30 h-[2px] bg-white/50 my-3"></div>
+        <p className="text-base text-gray-200">
+          Work on relationship dynamics, communication, and healing together.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       
-       <section className="relative px-8 lg:px-20 py-20 bg-gradient-to-b from-green-50 to-green-100 flex justify-center items-center">
+       <section className="relative px-8 lg:px-20 py-20 bg-gradient-to-l from-green-50 to-green-100 flex justify-center items-center">
   <div className="relative w-full max-w-5xl h-[70vh] bg-[url('/pic1.jpg')] bg-cover bg-center rounded-3xl shadow-2xl flex items-center justify-center">
     
     <div className="backdrop-blur-md bg-white/10 border border-white/50 rounded-xl p-6 max-w-sm text-center shadow-lg">
