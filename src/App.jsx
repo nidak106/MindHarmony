@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import AppView from "./components/AppView";
 import AuthForm from "./components/AuthForm";
+import React from "react";
+import { firebaseInitError } from "./components/firebase";
 
 const DUMMY_APPOINTMENTS = [
 {
@@ -27,7 +29,7 @@ meetUrl: "[https://meet.google.com/lmn-opqr-stu](https://meet.google.com/lmn-opq
 },
 ];
 
-function App() {
+export default function App() {
 const [currentView, setCurrentView] = useState("hero"); 
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 
