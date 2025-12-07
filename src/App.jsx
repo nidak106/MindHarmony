@@ -195,5 +195,3 @@ onSignOut={handleSignOut}
 
 return <HeroSection setCurrentView={setCurrentView} />;
 }
-
-export default App;
